@@ -1,10 +1,9 @@
 /* 頁面設定 */
-body {
+body { /* 🔄 修改：body 不需要設定 max-width 與 margin auto，交給 .left-panel 處理 */
     font-family: 'Comic Sans MS', sans-serif;
     background: linear-gradient(135deg, #182EC2, #dd2020); /* 黑藍色系漸層背景 */
-    max-width: 600px;
-    margin: auto;
-    padding: 30px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -15,6 +14,27 @@ h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
     font-weight: bold;
+}
+
+/* 容器：用 Flex 排列兩個區塊，達到左右兩個區塊佔螢幕 70% */
+.container {
+    display: flex;
+    width: 70%;  /* 設置容器寬度為 70% */
+    margin: auto;
+}
+
+/* 左側區塊：固定表單內容 */
+.left-panel {
+    width: 50%;  /* 左側區塊佔容器的 50% */
+    padding: 20px;
+}
+
+/* 右側區塊：顯示記錄 */
+.right-panel {
+    width: 50%;  /* 右側區塊佔容器的 50% */
+    padding: 20px;
+    overflow-y: auto;  /* 讓右側區塊可以滾動 */
+    max-height: 500px;  /* 設定最大高度，避免右側區塊過長，超出螢幕 */
 }
 
 /* 記帳表單 */
@@ -91,7 +111,7 @@ form button:hover {
 }
 
 .record strong {
-    color: #000000; /* 色 */
+    color: #000000; /* 黑色 */
     font-weight: bold;
 }
 
