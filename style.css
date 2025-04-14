@@ -1,59 +1,87 @@
 /* 頁面設定 */
-body { /* 🔄 修改：body 不需要設定 max-width 與 margin auto，交給 .left-panel 處理 */
+body {
     font-family: 'Comic Sans MS', sans-serif;
-    background: linear-gradient(135deg, #182EC2, #dd2020); /* 黑藍色系漸層背景 */
+    background: linear-gradient(135deg, #182EC2, #dd2020); /* 頁面背景漸層 */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    display: flex; /* 垂直置中 */
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
 
-/* 標題 */
-h1 {
-    text-align: center;
-    color: #1B98E0; /* 淺藍色 */
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    font-weight: bold;
+/* 外層 page 區塊，統一置中 */
+.page {
+    display: flex;
+    justify-content: center;
 }
 
-/* 容器：用 Flex 排列兩個區塊，達到左右兩個區塊佔螢幕 70% */
+/* container 用來控制左右區塊寬度 */
 .container {
     display: flex;
-    width: 70%;  /* 設置容器寬度為 70% */
-    margin: auto;
+    width: 90vw;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-direction: row;
+    gap: 40px;
+    padding: 40px 0;
 }
 
-/* 左側區塊：固定表單內容 */
-.left-panel {
-    width: 50%;  /* 左側區塊佔容器的 50% */
-    padding: 20px;
-}
-
-/* 右側區塊：顯示記錄 */
+/* 左右區塊寬度 */
+.left-panel,
 .right-panel {
-    width: 50%;  /* 右側區塊佔容器的 50% */
-    padding: 20px;
-    overflow-y: auto;  /* 讓右側區塊可以滾動 */
-    max-height: 500px;  /* 設定最大高度，避免右側區塊過長，超出螢幕 */
+    width: calc(50% - 20px);
 }
 
-/* 記帳表單 */
+/* 設定左右區塊之間的間隔 */
+.left-panel {
+    margin-right: 20px; /* ✅ 新增：給左區塊右邊加間隔 */
+}
+
+.right-panel {
+    margin-left: 20px; /* ✅ 新增：給右區塊左邊加間隔 */
+}
+
+/* 右側面板滾動區域設定 */
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* 固定右側面板標題 */
+.right-panel h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #1B98E0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    background: none; /* 移除標題區域背景漸層，讓其與頁面背景一致 */
+    padding: 10px 0;
+    z-index: 1;
+}
+
+/* 表單樣式設定 */
 form {
-    background-color: #000000; /* 黑色背景 */
+    background-color: #000000;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 8px 15px #FFFFFF;
-    margin-bottom: 20px;
     width: 100%;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 /* 表單內部元件 */
 form label {
     font-size: 1.2rem;
-    color: #1B98E0; /* 淺藍色 */
+    color: #1B98E0;
     margin-bottom: 8px;
     display: block;
 }
@@ -65,37 +93,28 @@ form input, form select, form button {
     border: 2px solid #2082D7;
     border-radius: 10px;
     font-size: 1.1rem;
-    color: #246CCD; /* 深藍色文字 */
+    color: #246CCD;
     outline: none;
     box-sizing: border-box;
 }
 
-/* 表單項目的focus效果 */
-form input:focus, form select:focus, form button:focus {
-    border-color: #2D40BA; /* 深米色 */
-    box-shadow: 0 0 5px rgba(180, 127, 111, 0.5);
-}
-
-/* 按鈕樣式 */
 form button {
-    background-color: #2D40BA;
-    color: #FFFFFF;
-    cursor: pointer;
-    border: none;
-    font-weight: bold;
+    background-color: #2082D7; /* ✅ 修改：新增記帳按鈕背景顏色 */
+    color: #FFFFFF;            /* ✅ 修改：新增記帳按鈕文字顏色 */
 }
 
 form button:hover {
-    background-color: #8DCCF0; /* 按鈕的淺藍色 hover */
+    background-color: #2D40BA; /* ✅ 修改：新增記帳按鈕懸停時的背景顏色 */
 }
 
 /* 記帳紀錄區域 */
 #records {
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
+/* 記帳紀錄樣式 */
 .record {
-    background-color: #1B98E0; /* 記帳紀錄的背景顏色 */
+    background-color: #1B98E0;
     border-radius: 12px;
     border: 1px solid #FFFFFF;
     padding: 15px;
@@ -103,15 +122,14 @@ form button:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* 記帳紀錄文字 */
 .record p {
     margin: 8px 0;
-    color: #000000; /* 黑色文字 */
+    color: #000000;
     font-size: 1.1rem;
 }
 
 .record strong {
-    color: #000000; /* 黑色 */
+    color: #000000;
     font-weight: bold;
 }
 
