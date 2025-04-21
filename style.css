@@ -139,3 +139,34 @@ hr {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+/* 🔥 新增：按鈕群組樣式 */
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.button-group button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #2082D7;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.button-group button:hover {
+    background-color: #2D40BA;
+}
+
+/* 🔥 新增：支出報表內的長條條樣式（用 inline style 也可以） */
+/* 不一定要寫在CSS，如果要更統一，可以加 */
+.report-bar {
+    background-color: #1B98E0;
+    height: 20px;
+    margin: 5px 0;
+    border-radius: 10px;
+}

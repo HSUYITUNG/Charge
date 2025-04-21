@@ -51,11 +51,25 @@
 
                     <button type="submit">新增記帳</button>
                 </form>
+
+                <!-- 新增選擇月份的篩選選項 -->
+                <label for="month">選擇月份：</label>
+                <input type="month" id="month" required>
             </div>
 
             <div class="right-panel"> <!-- 右側：支出紀錄顯示區塊 -->
                 <h2>記帳紀錄</h2>
+
+                <!-- 🔥 新增：切換按鈕 -->
+                <div class="button-group">
+                    <button id="show-records">支出紀錄</button>
+                    <button id="show-report">支出報表</button>
+                </div>
+
                 <div id="records"></div> <!-- 這裡會顯示記錄 -->
+
+                <!-- 🔥 新增：支出報表區 -->
+                <div id="report" style="display: none;"></div>
             </div>
         </div>
     </div>
